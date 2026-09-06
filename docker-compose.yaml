@@ -1,0 +1,24 @@
+services:
+  audio_cpp_server:
+    build:
+      context: ./audio_cpp_server
+      args:
+        CUDA_VERSION: ${CUDA_VERSION}
+        PORT: ${PORT}
+
+    container_name: audio_cpp_server
+    env_file: ".env"
+    shm_size: '16g'
+    volumes:
+      - ./audio_cpp_server:/app
+    ports:
+      - "${PORT}:${PORT}"
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

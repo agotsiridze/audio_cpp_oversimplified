@@ -1,0 +1,17 @@
+{
+    "host": "0.0.0.0",
+    "port": 8083,
+    "backend": "cuda",
+    "device": 0,
+    "threads": 1,
+    "lazy_load": false,
+    "models": [
+        {
+            "id": "meanvc2",
+            "family": "meanvc2",
+            "path": "/app/models/base_models/meanvc2.gguf",
+            "task": "vc",
+            "mode": "streaming"
+        }
+    ]
+}
