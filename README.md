@@ -144,7 +144,7 @@ Once inside, you're at a normal bash prompt inside the container and
 can launch the server directly against a config, e.g.:
 
 ```bash
-/src/audiocpp_server --config /app/configs/omnivoice_stream.json
+bash app/run_server/omnivoice.bash
 ```
 
 **Option B — run a single command directly from the host** (no need
@@ -163,16 +163,6 @@ Each `run_server/*.bash` script launches the server binary against a
 specific config. The binary resolves to `/src/audiocpp_server` inside
 the container:
 
-```bash
-# Text-to-speech (streaming)
-/src/audiocpp_server --config /app/configs/omnivoice_stream.json
-
-# Voice conversion
-/src/audiocpp_server --config /app/configs/meanvc2.json
-
-# Speech generation
-/src/audiocpp_server --config /app/configs/ace-step-1.5-turbo.json
-```
 
 The equivalent host-side scripts live under
 `audio_cpp_server/run_server/`.
@@ -183,7 +173,7 @@ Model weights are GGUF files pulled from Hugging Face. The download
 scripts use `aria2c` with your `HF_TOKEN`:
 
 ```bash
-audio_cpp_server/download_models/omnivoice.bash
+app/download_models/omnivoice.bash
 ```
 
 Models are saved to `audio_cpp_server/models/base_models/` and
